@@ -1,14 +1,16 @@
 # TPOS_tmux
+Python script that start tmux session with --N jupyters notebook in individual directory(also create them)
 
-Написать программу, которая запускает в tmux N изолированных окружений (директорий) Jupyter.
-
-- У каждого окружения должна быть своя рабочая директория, свой порт и токен.
-- Каждое окружение должно жить в своём tmux-окне (window).
-- Программа должна уметь стартовать и убивать окружения.
-
-При старте окружений должен выводиться progress bar (т.к. старт большого кол-ва сессий с Jupyter может занять время). Для этого можно использовать библиотеку tqdm.
-
-Команда, с помощью которой можно стартовать Jupyter'ы:
-```bash
-jupyter notebook --ip {} --port {} --no-browser --NotebookApp.token='{}' --NotebookApp.notebook_dir='{}'
+To start use (don't forget install requirements in your env `pip install -r requirements.txt`):
 ```
+python main.py start 5
+```
+
+To connect to the created session use:
+```
+tmux at -t YOUR_TMUX_SESSION_NAME (by default {username}tmux_session)
+```
+
+To stop each tmux pannel and delete folder use: 
+
+```python main.py stop_all```
